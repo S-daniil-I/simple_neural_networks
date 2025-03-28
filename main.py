@@ -3,7 +3,7 @@ import torch
 device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 def act(x):
-    return 0 if x < 0 else 1
+    return 0 if x < 0.5 else 1
 def go(house,rock,attr):
     X=torch.tensor([house,rock,attr],dtype=torch.float32,device=device)
     Wh=torch.tensor([[0.3,0.3,0],[0.4,-0.5,1]],device=device)
@@ -21,9 +21,9 @@ def go(house,rock,attr):
 
     return Y
 
-house=1
-rock=1
-attr=0
+house=0
+rock=0
+attr=1
 
 res=go(house,rock,attr)
 
